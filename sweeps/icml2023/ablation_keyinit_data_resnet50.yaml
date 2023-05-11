@@ -1,0 +1,100 @@
+command:
+- python
+- scripts/train.py
+- ${args}
+method: 'grid'
+metric:
+  name: test_accuracy
+  goal: maximize
+name: "ablation_key_init_data_resnet50"
+parameters:
+  sweep_name:
+    distribution: constant
+    value: "ablation_key_init_data_resnet50"
+  decoder_model:
+    distribution: constant
+    value: codebook-voting-logits
+  values_init:
+    distribution: constant
+    value: zeros
+  optimizer:
+    distribution: constant
+    value: SGD
+  learning_rate:
+    distribution: constant
+    value: 0.3
+  gradient_clip:
+    distribution: constant
+    value: 1.0
+  batch_size:
+    distribution: constant
+    value: 256
+  seed:
+    distribution: categorical
+    values: [1, 2, 3, 4, 5]
+  dim_key:
+    distribution: constant
+    value: 14
+  pretrain_data:
+    distribution: categorical
+    values: [CIFAR10, STL10, ImagenetFFCV, CIFAR100]
+  dim_value:
+    distribution: constant
+    value: 10
+  backbone:
+    distribution: categorical
+    values: [resnet50_imagenet_v2]
+  dataset_name:
+    distribution: constant
+    value: CIFAR10
+  t_mode:
+    distribution: constant
+    value: uniform_importance
+  scaling_mode:
+    distribution: constant
+    value: free_num_keys
+  num-workers:
+    distribution: constant
+    value: 8
+  init_mode:
+    distribution: constant
+    value: random
+  decay:
+    distribution: constant
+    value: 0.95
+  splitting_mode:
+    distribution: constant
+    value: random_projection
+  num_books:
+    distribution: constant
+    value: 256
+  threshold_factor:
+    distribution: constant
+    value: 0.1
+  num_pairs:
+    distribution: constant
+    value: 4096
+  pretrain_layer:
+    distribution: constant
+    value: 4
+  accept_image_fmap:
+    distribution: constant
+    value: False
+  training_mode:
+    distribution: categorical
+    values: [ood, iid]
+  method:
+    distribution: constant
+    value: ours
+  init_epochs:
+    distribution: constant
+    value: 10
+  label_smoothing:
+    distribution: constant
+    value: 0.1
+  log_step_size:
+    distribution: constant
+    value: 100
+  save_checkpoints:
+    distribution: constant
+    value: False

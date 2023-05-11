@@ -1,0 +1,9 @@
+artefacts
+.idea/
+*.iml
+*.egg-info
+wandb
+dataset
+*.pyc
+*__pycache__*
+.DS_Store

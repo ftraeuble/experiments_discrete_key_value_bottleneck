@@ -1,0 +1,100 @@
+command:
+- python
+- scripts/train.py
+- ${args}
+method: 'grid'
+metric:
+  name: test_accuracy
+  goal: maximize
+name: "cifar10_ssl_lp_base"
+parameters:
+  sweep_name:
+    distribution: constant
+    value: "cifar10_ssl_lp_base"
+  decoder_model:
+    distribution: categorical
+    values: [linear-probe, mlp-128, lp-no-bias]
+  values_init:
+    distribution: constant
+    value: zeros
+  optimizer:
+    distribution: constant
+    value: SGD
+  learning_rate:
+    distribution: constant
+    value: 0.001
+  gradient_clip:
+    distribution: constant
+    value: 1.0
+  batch_size:
+    distribution: constant
+    value: 256
+  seed:
+    distribution: categorical
+    values: [1, 2, 3, 4, 5]
+  dim_key:
+    distribution: constant
+    value: 14
+  pretrain_data:
+    distribution: categorical
+    values: [CIFAR100]
+  dim_value:
+    distribution: constant
+    value: 10
+  backbone:
+    distribution: categorical
+    values: [swav_resnet50w2, dino_resnet50]
+  dataset_name:
+    distribution: constant
+    value: CIFAR10
+  t_mode:
+    distribution: constant
+    value: uniform_importance
+  scaling_mode:
+    distribution: constant
+    value: free_num_keys
+  num-workers:
+    distribution: constant
+    value: 8
+  init_mode:
+    distribution: constant
+    value: random
+  decay:
+    distribution: constant
+    value: 0.95
+  splitting_mode:
+    distribution: constant
+    value: random_projection
+  num_books: # just a placeholder, is not used in mlp method mode
+    distribution: constant
+    value: 1
+  threshold_factor:
+    distribution: constant
+    value: 0.1
+  num_pairs: # just a placeholder, is not used in mlp method mode
+    distribution: constant
+    value: 10
+  pretrain_layer:
+    distribution: constant
+    value: 3
+  accept_image_fmap:
+    distribution: constant
+    value: False
+  training_mode:
+    distribution: categorical
+    values: [ood, iid]
+  method:
+    distribution: constant
+    value: mlp
+  init_epochs:
+    distribution: constant
+    value: 10
+  label_smoothing:
+    distribution: constant
+    value: 0.1
+  log_step_size:
+    distribution: constant
+    value: 100
+  save_checkpoints:
+    distribution: constant
+    value: False

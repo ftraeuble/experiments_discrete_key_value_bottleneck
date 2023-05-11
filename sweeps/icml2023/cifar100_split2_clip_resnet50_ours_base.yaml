@@ -1,0 +1,107 @@
+command:
+- python
+- scripts/train.py
+- ${args}
+- --no_per_class_acc
+method: 'grid'
+metric:
+  name: test_accuracy
+  goal: maximize
+name: "cifar100_split2_clip_resnet50_ours_base"
+parameters:
+  sweep_name:
+    distribution: constant
+    value: "cifar100_clip_resnet50_ours_base"
+  decoder_model:
+    distribution: constant
+    value: codebook-voting-logits
+  values_init:
+    distribution: constant
+    value: zeros
+  optimizer:
+    distribution: constant
+    value: SGD
+  learning_rate:
+    distribution: constant
+    value: 0.3
+  gradient_clip:
+    distribution: constant
+    value: 1.0
+  batch_size:
+    distribution: constant
+    value: 256
+  seed:
+    distribution: categorical
+    values: [1, 2, 3]
+  dim_key:
+    distribution: constant
+    value: 14
+  pretrain_data:
+    distribution: constant
+    value: CIFAR10
+  dim_value:
+    distribution: constant
+    value: 100
+  backbone:
+    distribution: categorical
+    values: [clip_vit_b32, resnet50_imagenet_v2]
+  dataset_name:
+    distribution: constant
+    value: CIFAR100
+  t_mode:
+    distribution: constant
+    value: uniform_importance
+  scaling_mode:
+    distribution: constant
+    value: free_num_keys
+  num-workers:
+    distribution: constant
+    value: 8
+  init_mode:
+    distribution: constant
+    value: random
+  decay:
+    distribution: constant
+    value: 0.95
+  splitting_mode:
+    distribution: constant
+    value: random_projection
+  num_books:
+    distribution: constant
+    value: 256
+  threshold_factor:
+    distribution: constant
+    value: 0.1
+  num_pairs:
+    distribution: constant
+    value: 4096
+  pretrain_layer:
+    distribution: constant
+    value: 4
+  accept_image_fmap:
+    distribution: constant
+    value: False
+  training_mode:
+    distribution: categorical
+    values: [ood, iid]
+  method:
+    distribution: constant
+    value: ours
+  init_epochs:
+    distribution: constant
+    value: 10
+  label_smoothing:
+    distribution: constant
+    value: 0.1
+  log_step_size:
+    distribution: constant
+    value: 100
+  save_checkpoints:
+    distribution: constant
+    value: False
+  split_size:
+    distribution: categorical
+    values: [2]
+  cl_epochs:
+    distribution: constant
+    value: 500
