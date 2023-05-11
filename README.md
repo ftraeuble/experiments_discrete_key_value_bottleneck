@@ -7,12 +7,13 @@
 ### 1. Prerequisites
 
 To reproduce the results of the paper, you need to first create 
-a conda environment together with the two packages included in this directory:
+a conda environment and install the package:
 
 ```bash   
 conda create -n kvb python=3.10.6
 conda activate kvb 
-cd kv_bottleneck_experiments
+git clone git@github.com:ftraeuble/experiments_discrete_key_value_bottleneck.git
+cd experiments_discrete_key_value_bottleneck
 pip install .
 ```
 
@@ -32,7 +33,7 @@ export PROJECT_ROOT_DIR=YOUR_PROJECT_ROOT_DIR
 ```
 
 To run the experiments it is advisable to precompute the relevant backbone embeddings across all required datasets. To reproduce the ConvMixer experiments, you will have to download 
-the CIFAR10 and Imagenet32 Embeddings for the ConvMixer backbone from the SDMLP paper from Bricken et al. describe in their gitHub repo: [SDM](https://github.com/anon8371/AnonPaper1)
+the CIFAR10 and Imagenet32 Embeddings for the ConvMixer backbone from the SDMLP paper submission [repository](https://github.com/anon8371/AnonPaper1) from Bricken et al. (2023).
 
 To precompute the embeddings, you can use the following two notebooks:
 
