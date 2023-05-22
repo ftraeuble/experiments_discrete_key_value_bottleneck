@@ -37,7 +37,7 @@ parameters:
     value: 14
   pretrain_data:
     distribution: categorical
-    values: [CIFAR10, STL10, ImagenetFFCV, CIFAR100]
+    values: [CIFAR10, STL10, CIFAR100]
   dim_value:
     distribution: constant
     value: 10
