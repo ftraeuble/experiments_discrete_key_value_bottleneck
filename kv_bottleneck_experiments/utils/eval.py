@@ -39,11 +39,10 @@ def evaluate_accuracy(
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
-            if not args.no_per_class_acc:
-                for label, prediction in zip(labels, predicted):
-                    if label == prediction:
-                        correct_pred[label] += 1
-                    total_pred[label] += 1
+            for label, prediction in zip(labels, predicted):
+                if label == prediction:
+                    correct_pred[label] += 1
+                total_pred[label] += 1
 
         acc1 = 100 * float(sum([correct_pred[i]/total_pred[i] for i in range(num_classes)])/num_classes)
         log_dict = {

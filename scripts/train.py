@@ -123,18 +123,19 @@ def train(args):
         raise ValueError("Unknown values_init: " + args.values_init)
     model.bottlenecked_encoder.bottleneck.values = nn.Parameter(values)
     model.bottlenecked_encoder.bottleneck.values.requires_grad = True
+    num_classes = base_utils.get_class_nums(args)
 
     if args.training_mode == "ood":
         epoch_factor = 1
         if args.seed not in [0, 42]:
-            class_split = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            class_split = list(range(num_classes))
             import random
 
             random.shuffle(class_split)
             class_splits = []
             split_size = args.split_size
             assert split_size in [1, 2, 5, 10]
-            num_splits = 10 // split_size
+            num_splits = num_classes // split_size
             epoch_factor = split_size / 2
             for i in range(num_splits):
                 class_splits.append(class_split[i * split_size: (i + 1) * split_size])
@@ -142,8 +143,8 @@ def train(args):
         else:
             class_splits = [[0, 1], [2, 3], [4, 5], [6, 7], [8, 9]]
     elif args.training_mode == "iid":
-        epoch_factor = 5
-        class_splits = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]
+        epoch_factor = num_classes / 2
+        class_splits = [list(range(num_classes))]
     else:
         raise ValueError("Unknown train_mode: " + args.training_mode)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
