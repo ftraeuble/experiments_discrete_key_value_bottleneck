@@ -20,7 +20,6 @@ setup(
         'matplotlib',
         'numpy',
         'einops',
-        'clip @ git+https://github.com/openai/CLIP.git#egg=clip',
         'key_value_bottleneck @ git+https://github.com/ftraeuble/discrete_key_value_bottleneck.git#egg=key_value_bottleneck',
     ]
 )
