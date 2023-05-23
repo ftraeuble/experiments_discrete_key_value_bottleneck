@@ -24,7 +24,7 @@ To reproduce the toy experiments from Fig. 2 in the paper, you can run the follo
 - [Reproduce Experiments Figure 2](kv_bottleneck_experiments%2Fnotebooks%2Freproduce_experiments_figure_2.ipynb)
 
 To reproduce the main experiments CIFAR10 you need to first log in to wandb in your machine, set your wandb 
-PROJECT_NAME and PROJECT_ENTITY as well as the PROJECT_ROOT_DIR environment variable. 
+`PROJECT_NAME` and `PROJECT_ENTITY` as well as the `PROJECT_ROOT_DIR` environment variable. 
 
 ```bash
 export PROJECT_NAME=YOUR_PROJECT_NAME
@@ -41,7 +41,7 @@ To precompute the embeddings, you can use the following two notebooks:
 
 - [Precompute Other Backbone Embeddings](kv_bottleneck_experiments%2Fnotebooks%2Fcreate_backbone_embeddings.ipynb)
 
-Finally, store all created embeddings and label files in a folder named `backbone_embeddings` within YOUR_PROJECT_ROOT_DIR.
+Finally, store all created embeddings and label files in a folder named `backbone_embeddings` within `PROJECT_ROOT_DIR`.
  
 A list of all sweeps can be found in the directory `sweeps/icml2023`. Run the following command:
 
