@@ -21,8 +21,7 @@ pip install .
 
 To reproduce the toy experiments from Fig. 2 in the paper, you can run the following notebook:
 
-- [Reproduce Experiments Figure 2](
-experiments_discrete_key_value_bottleneck%2Fnotebooks%2Freproduce_experiments_figure_2.ipynb)
+- [Reproduce Experiments Figure 2](notebooks%2Freproduce_experiments_figure_2.ipynb)
 
 To reproduce the main experiments CIFAR10 you need to first log in to wandb in your machine, set your wandb 
 `PROJECT_NAME` and `PROJECT_ENTITY` as well as the `PROJECT_ROOT_DIR` environment variable. 
@@ -38,11 +37,9 @@ the CIFAR10 and Imagenet32 Embeddings for the ConvMixer backbone from the SDMLP 
 
 To precompute the embeddings, you can use the following two notebooks:
 
-- [Precompute ConvMixer Embeddings](
-experiments_discrete_key_value_bottleneck%2Fnotebooks%2Fcreate_convmixer_embeddings.ipynb)  
+- [Precompute ConvMixer Embeddings](notebooks%2Fcreate_convmixer_embeddings.ipynb)  
 
-- [Precompute Other Backbone Embeddings](
-experiments_discrete_key_value_bottleneck%2Fnotebooks%2Fcreate_backbone_embeddings.ipynb)
+- [Precompute Other Backbone Embeddings](notebooks%2Fcreate_backbone_embeddings.ipynb)
 
 Finally, store all created embeddings and label files in a folder named `backbone_embeddings` within `PROJECT_ROOT_DIR`.
  
