@@ -1,4 +1,4 @@
-## Discrete Key Value Bottleneck Codebase 
+## Discrete Key Value Bottleneck Codebase (ICML 2023 Experiments)
 
 
 > [**Discrete Key-Value Bottleneck**](https://arxiv.org/abs/2207.11240)
@@ -17,11 +17,13 @@ cd experiments_discrete_key_value_bottleneck
 pip install .
 ```
 
+This will install the `discrete_key_value_bottleneck` [package](https://github.com/ftraeuble/discrete_key_value_bottleneck) as well as all required dependencies.
+
 ### 2. Reproduce the Experiments
 
 To reproduce the toy experiments from Fig. 2 in the paper, you can run the following notebook:
 
-- [Reproduce Experiments Figure 2](notebooks%2Freproduce_experiments_figure_2.ipynb)
+- [Reproduce Experiments Figure 2](notebooks/reproduce_experiments_figure_2.ipynb)
 
 To reproduce the main experiments CIFAR10 you need to first log in to wandb in your machine, set your wandb 
 `PROJECT_NAME` and `PROJECT_ENTITY` as well as the `PROJECT_ROOT_DIR` environment variable. 
@@ -39,7 +41,7 @@ To precompute the embeddings, you can use the following two notebooks:
 
 - [Precompute ConvMixer Embeddings](notebooks/create_convmixer_embeddings.ipynb)  
 
-- [Precompute Other Backbone Embeddings](notebooks%2Fcreate_backbone_embeddings.ipynb)
+- [Precompute Other Backbone Embeddings](notebooks/create_backbone_embeddings.ipynb)
 
 Finally, store all created embeddings and label files in a folder named `backbone_embeddings` within `PROJECT_ROOT_DIR`.
  
