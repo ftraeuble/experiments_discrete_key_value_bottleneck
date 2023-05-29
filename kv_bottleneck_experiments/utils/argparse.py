@@ -8,17 +8,18 @@ class ArgumentParserWrapper(argparse.ArgumentParser):
     def __init__(self):
         super().__init__()
         self.add_argument('--plot_pair_utilization', type=str, default="false")
-        self.add_argument('--no_per_class_acc', action='store_true')
+        self.add_argument('--no_per_class_acc', action='store_true', help='log only acc')
         self.add_argument('--sweep_name', type=str, default="no_sweep")
         self.add_argument('--values_init', type=str, default="zeros", help='rand or zeros')
         self.add_argument('--backbone', type=str, default="dino_resnet50",
-                          help="dino_resnet50 or dino_vits8")
+                          help="resnet50_imagenet_v2, clip_vit_b32, vicreg, swav_resnet50w2, "
+                               "convmixer, dino_resnet50")
         self.add_argument('--t_mode', type=str, default="uniform_importance",
                           help='uniform_importance only mode so far')
         self.add_argument('--scaling_mode', type=str, default="free_num_keys",
                           help='free_num_keys only so far')
         self.add_argument('--batch_size', type=int, default=256,
-                          help='Number of tasks in a mini-batch of tasks (default: 16).')
+                          help='Number of tasks in a mini-batch of tasks (default: 256).')
         self.add_argument('--epochs', type=int, default=200,
                           help='epochs to train.')
         self.add_argument('--train_epochs', type=int, default=100,
@@ -31,7 +32,7 @@ class ArgumentParserWrapper(argparse.ArgumentParser):
         self.add_argument('--seed', type=int, default=42,
                           help='random seed')
         self.add_argument('--dataset_name', type=str, default="CIFAR10",
-                          help='CI dataset name')
+                          help='Class Incremental learning dataset name')
         self.add_argument('--training_mode', type=str, default="ood",
                           help='iid or ood (class incremental)')
         self.add_argument('--save_checkpoints', type=str, default="false")
