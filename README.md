@@ -37,7 +37,7 @@ the CIFAR10 and Imagenet32 Embeddings for the ConvMixer backbone from the SDMLP 
 
 To precompute the embeddings, you can use the following two notebooks:
 
-- [Precompute ConvMixer Embeddings](notebooks%2Fcreate_convmixer_embeddings.ipynb)  
+- [Precompute ConvMixer Embeddings](notebooks/create_convmixer_embeddings.ipynb)  
 
 - [Precompute Other Backbone Embeddings](notebooks%2Fcreate_backbone_embeddings.ipynb)
 
